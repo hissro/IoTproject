@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     Text(
-                      "Hi,Dimest",
+                      "Hi, Tebian",
                       style: TextStyle(
                           fontSize: 28,
                           color: Colors.black,
@@ -124,8 +124,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Expanded(
                             child: GridView.builder(
-                                padding: const EdgeInsets.only(top: 10, bottom: 20),
-                                
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 20),
                                 gridDelegate:
                                     const SliverGridDelegateWithMaxCrossAxisExtent(
                                         maxCrossAxisExtent: 200,
