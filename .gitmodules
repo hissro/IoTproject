@@ -1,0 +1,3 @@
+[submodule "modules/iotprojectsyracuse"]
+	path = modules/iotprojectsyracuse
+	url = https://github.com/ShreyasHosmani/iotprojectsyracuse.git
