@@ -14,25 +14,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<DeviceModel> devices = [
     DeviceModel(
-        name: 'Smart Spotlight',
+        name: 'light',
         isActive: true,
         color: "#ff5f5f",
         icon: 'assets/svg/light.svg'),
     DeviceModel(
-        name: 'Smart AC',
+        name: 'Fan',
         isActive: true,
         color: "#7739ff",
         icon: 'assets/svg/ac.svg'),
     DeviceModel(
-        name: 'Smart TV',
+        name: 'Water Pump',
         isActive: false,
         color: "#c9c306",
         icon: 'assets/svg/tv.svg'),
-    DeviceModel(
-        name: 'Smart Sound',
-        isActive: false,
-        color: "#c207db",
-        icon: 'assets/svg/speaker.svg'),
+    // DeviceModel(
+    //     name: 'Smart Sound',
+    //     isActive: false,
+    //     color: "#c207db",
+    //     icon: 'assets/svg/speaker.svg'),
   ];
 
   FirebaseDatabase database = FirebaseDatabase.instance;
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                                         fontWeight: FontWeight.normal),
                                   ),
                                   Text(
-                                    "Living Room",
+                                    "Green House",
                                     style: TextStyle(
                                         height: 1.1,
                                         fontSize: 17,
@@ -138,6 +138,7 @@ class _HomePageState extends State<HomePage> {
                             height: 10,
                           ),
 
+/*
                           ElevatedButton(
                             onPressed: () {
                               UpdateDB(
@@ -158,6 +159,7 @@ class _HomePageState extends State<HomePage> {
                             child: const Text('Ubdate Data'),
                           ),
 
+*/
                           //  Db  Side
                           StreamBuilder(
                             stream: ref.onValue,
@@ -169,8 +171,61 @@ class _HomePageState extends State<HomePage> {
 
                                 print('DataBease Data: ${map}');
 
-                                return Column(
-                                  children: [],
+                                return Container(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.hot_tub,
+                                                color: Colors.teal,
+                                              ),
+                                              Text(
+                                                  'Temperature: ${map["sensor"]["temperature"]} c '),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.wind_power,
+                                                color: Colors.teal,
+                                              ),
+                                              Text(
+                                                  'humdity: ${map["sensor"]["air_humdity"]}'),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons
+                                                    .file_download_done_rounded,
+                                                color: Colors.deepPurple,
+                                              ),
+                                              Text(
+                                                  'Soail Humdity: ${map["sensor"]["soail_humdity"]} '),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                    ],
+                                  ),
                                 );
                               } else if (snapshot.hasError) {
                                 return Text("Error");
