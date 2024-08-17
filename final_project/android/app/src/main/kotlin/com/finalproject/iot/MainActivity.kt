@@ -1,4 +1,4 @@
-package com.finalproject.final_project
+package com.finalproject.iot
 
 import io.flutter.embedding.android.FlutterActivity
 

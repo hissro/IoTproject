@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:final_project/model/device_model.dart';
 import 'package:final_project/pages/home/widgets/devices.dart';
 import 'package:final_project/utils/string_to_color.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -34,6 +35,17 @@ class _HomePageState extends State<HomePage> {
         icon: 'assets/svg/speaker.svg'),
   ];
 
+  FirebaseDatabase database = FirebaseDatabase.instance;
+  DatabaseReference ref = FirebaseDatabase.instance.ref();
+
+  void UpdateDB(
+      {required String filedname, required dynamic filed_value}) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("sensor");
+    await ref.update({
+      "$filedname": filed_value,
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,10 +63,10 @@ class _HomePageState extends State<HomePage> {
           child: SafeArea(
             child: Column(
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Hi, Tebian",
                       style: TextStyle(
@@ -88,6 +100,9 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(
                             height: 5,
                           ),
+
+                          //  UpdateDB
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,6 +137,48 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(
                             height: 10,
                           ),
+
+                          ElevatedButton(
+                            onPressed: () {
+                              UpdateDB(
+                                  filedname: "air_humdity", filed_value: 43);
+                              UpdateDB(filedname: "fan", filed_value: true);
+                              UpdateDB(filedname: "light", filed_value: true);
+                              UpdateDB(
+                                  filedname: "soail_humdity", filed_value: 20);
+                              UpdateDB(
+                                  filedname: "temperature", filed_value: 22);
+                              UpdateDB(
+                                  filedname: "waterpump", filed_value: true);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                elevation: 12.0,
+                                textStyle:
+                                    const TextStyle(color: Colors.white)),
+                            child: const Text('Ubdate Data'),
+                          ),
+
+                          //  Db  Side
+                          StreamBuilder(
+                            stream: ref.onValue,
+                            builder: (context,
+                                AsyncSnapshot<DatabaseEvent> snapshot) {
+                              if (snapshot.hasData) {
+                                Map<dynamic, dynamic> map = snapshot.data!
+                                    .snapshot.value as Map<dynamic, dynamic>;
+
+                                print('DataBease Data: ${map}');
+
+                                return Column(
+                                  children: [],
+                                );
+                              } else if (snapshot.hasError) {
+                                return Text("Error");
+                              } else
+                                return Text("Error");
+                            },
+                          ),
+
                           Expanded(
                             child: GridView.builder(
                                 padding:
@@ -147,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                                     },
                                   );
                                 }),
-                          ),
+                          )
                         ],
                       ),
                     ),
