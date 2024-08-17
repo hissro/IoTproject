@@ -11,43 +11,23 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  List<DeviceModel> devices = [
-    DeviceModel(
-        name: 'light',
-        isActive: true,
-        color: "#ff5f5f",
-        icon: 'assets/svg/light.svg'),
-    DeviceModel(
-        name: 'Fan',
-        isActive: true,
-        color: "#7739ff",
-        icon: 'assets/svg/ac.svg'),
-    DeviceModel(
-        name: 'Water Pump',
-        isActive: false,
-        color: "#c9c306",
-        icon: 'assets/svg/tv.svg'),
-    // DeviceModel(
-    //     name: 'Smart Sound',
-    //     isActive: false,
-    //     color: "#c207db",
-    //     icon: 'assets/svg/speaker.svg'),
-  ];
+class _HomePageState extends State<HomePage>
+{
+
 
   FirebaseDatabase database = FirebaseDatabase.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref();
 
-  void UpdateDB(
-      {required String filedname, required dynamic filed_value}) async {
+  void UpdateDB(   {required String filedname, required dynamic filed_value}) async
+  {
     DatabaseReference ref = FirebaseDatabase.instance.ref("sensor");
-    await ref.update({
-      "$filedname": filed_value,
-    });
+    await ref.update({ "$filedname": filed_value });
   }
 
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -62,26 +42,28 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
           child: SafeArea(
             child: Column(
-              children: [
+              children:
+              [
+
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children:
+                  [
                     Text(
-                      "Hi, Tebian",
+                      "هلا, تبيان",
                       style: TextStyle(
-                          fontSize: 28,
+                          fontSize: 22,
                           color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold ),
                     ),
-                    CircleAvatar(
-                        minRadius: 16,
-                        backgroundImage: AssetImage("assets/images/user.webp"))
+
+                    CircleAvatar( minRadius: 16, backgroundImage: AssetImage("assets/images/user.webp")),
                   ],
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+
+                const SizedBox( height: 30,),
+
                 Expanded(
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -96,29 +78,26 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 5,
-                          ),
+                        children:
+                        [
+
+                          const SizedBox( height: 5,),
+
 
                           //  UpdateDB
 
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children:
+                            [
+
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children:
+                                [
                                   Text(
-                                    "A total of 4 devices",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                  Text(
-                                    "Green House",
+                                    "الزراعة الذكية",
                                     style: TextStyle(
                                         height: 1.1,
                                         fontSize: 17,
@@ -127,144 +106,173 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ],
                               ),
-                              Icon(
-                                Icons.more_horiz,
-                                color: Colors.grey[300],
-                                size: 30,
-                              )
+
+
+                              // Icon(
+                              //   Icons.more_horiz,
+                              //   color: Colors.grey[300],
+                              //   size: 30,
+                              // )
+
                             ],
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
 
-/*
-                          ElevatedButton(
-                            onPressed: () {
-                              UpdateDB(
-                                  filedname: "air_humdity", filed_value: 43);
-                              UpdateDB(filedname: "fan", filed_value: true);
-                              UpdateDB(filedname: "light", filed_value: true);
-                              UpdateDB(
-                                  filedname: "soail_humdity", filed_value: 20);
-                              UpdateDB(
-                                  filedname: "temperature", filed_value: 22);
-                              UpdateDB(
-                                  filedname: "waterpump", filed_value: true);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                elevation: 12.0,
-                                textStyle:
-                                    const TextStyle(color: Colors.white)),
-                            child: const Text('Ubdate Data'),
-                          ),
+                          const SizedBox( height: 25,),
 
-*/
+
+
                           //  Db  Side
                           StreamBuilder(
                             stream: ref.onValue,
-                            builder: (context,
-                                AsyncSnapshot<DatabaseEvent> snapshot) {
-                              if (snapshot.hasData) {
-                                Map<dynamic, dynamic> map = snapshot.data!
-                                    .snapshot.value as Map<dynamic, dynamic>;
+                            builder: (context, AsyncSnapshot<DatabaseEvent> snapshot)
+                            {
 
-                                print('DataBease Data: ${map}');
+                              if (snapshot.hasData)
+                              {
+                                Map<dynamic, dynamic> map = snapshot.data! .snapshot.value as Map<dynamic, dynamic>;
 
                                 return Container(
                                   padding: EdgeInsets.all(8.0),
                                   child: Column(
-                                    children: [
+                                    children:
+                                    [
+
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
+                                        mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+                                        children:
+                                        [
+
                                           Row(
-                                            children: [
-                                              Icon(
+                                            children:
+                                            [
+                                              const Icon(
                                                 Icons.hot_tub,
-                                                color: Colors.teal,
+                                                color: Colors.deepOrange,
                                               ),
-                                              Text(
-                                                  'Temperature: ${map["sensor"]["temperature"]} c '),
+                                              const SizedBox(width: 5,),
+                                              Text(' الحرارة: ${map["sensor"]["temperature"]} مئوية ' , style: const TextStyle( color:  Colors.deepOrange ),),
                                             ],
                                           ),
+
                                           Row(
-                                            children: [
-                                              Icon(
+                                            children:
+                                            [
+                                              const Icon(
                                                 Icons.wind_power,
                                                 color: Colors.teal,
                                               ),
-                                              Text(
-                                                  'humdity: ${map["sensor"]["air_humdity"]}'),
+
+                                              const SizedBox(width: 5,),
+
+                                              Text(   'الرطوبة: ${map["sensor"]["air_humdity"]}',  style: const TextStyle( color:  Colors.teal )),
                                             ],
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
+
+                                      const SizedBox(   height: 15,),
+
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
+                                        mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+                                        children:
+                                        [
                                           Row(
-                                            children: [
-                                              Icon(
-                                                Icons
-                                                    .file_download_done_rounded,
-                                                color: Colors.deepPurple,
-                                              ),
-                                              Text(
-                                                  'Soail Humdity: ${map["sensor"]["soail_humdity"]} '),
+                                            children:
+                                            [
+                                              const Icon( Icons.solar_power_outlined , color: Colors.deepPurple,),
+                                              const SizedBox(width: 5,),
+                                              Text( 'رطوبة التربة: ${map["sensor"]["soail_humdity"]} ' , style: const TextStyle( color:  Colors.deepPurple )),
                                             ],
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 15,
+
+                                      const SizedBox(   height: 45 ),
+
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children:
+                                        [
+
+                                          Devices(
+                                            name: "الاضاءة ",
+                                            svg: 'assets/svg/light.svg',
+                                            color:  Color( 0xFFff5f5f ),
+                                            isActive: map["sensor"]["light"],
+                                            onChanged: (val)
+                                            {
+                                              setState(()
+                                              {
+                                                print('light:  ${map["sensor"]["light"]}');
+                                                UpdateDB(filedname: "light", filed_value: !map["sensor"]["light"]  );
+                                              });
+                                            },
+                                          ),
+
+
+                                          Devices(
+                                            name: "المروحة ",
+                                            svg: 'assets/svg/ac.svg',
+                                            color:  const Color( 0xFF7739ff),
+                                            isActive: map["sensor"]["fan"],
+                                            onChanged: (val)
+                                            {
+                                              setState(()
+                                              {
+
+                                                print('fan:  ${map["sensor"]["fan"]}');
+
+                                                UpdateDB(filedname: "fan", filed_value: !map["sensor"]["fan"]  );
+
+
+                                              });
+                                            },
+                                          ),
+
+
+                                          Devices(
+                                            name: 'مضخة المياه',
+                                            svg: 'assets/svg/tv.svg',
+                                            color:  const Color( 0xFF16a085 ),
+                                            isActive: map["sensor"]["waterpump"],
+                                            onChanged: (val)
+                                            {
+                                              setState(()
+                                              {
+
+                                                print('waterpump:  ${map["sensor"]["waterpump"]}');
+
+                                                UpdateDB(filedname: "waterpump", filed_value: !map["sensor"]["waterpump"]  );
+
+
+                                              });
+                                            },
+                                          ),
+
+
+                                        ],
                                       ),
+
+
                                     ],
                                   ),
                                 );
+
                               } else if (snapshot.hasError) {
-                                return Text("Error");
-                              } else
-                                return Text("Error");
+                                return const Text ("حدث خطأ ما");
+                              } else {
+                                return const Text ("حدث خطأ ما"); }
                             },
                           ),
 
-                          Expanded(
-                            child: GridView.builder(
-                                padding:
-                                    const EdgeInsets.only(top: 10, bottom: 20),
-                                gridDelegate:
-                                    const SliverGridDelegateWithMaxCrossAxisExtent(
-                                        maxCrossAxisExtent: 200,
-                                        childAspectRatio: 3 / 4,
-                                        crossAxisSpacing: 20,
-                                        mainAxisSpacing: 20),
-                                itemCount: devices.length,
-                                itemBuilder: (BuildContext ctx, index) {
-                                  return Devices(
-                                    name: devices[index].name,
-                                    svg: devices[index].icon,
-                                    color: devices[index].color.toColor(),
-                                    isActive: devices[index].isActive,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        devices[index].isActive =
-                                            !devices[index].isActive;
-                                      });
-                                    },
-                                  );
-                                }),
-                          )
+
                         ],
                       ),
                     ),
                   ),
                 ),
+
               ],
             ),
           ),

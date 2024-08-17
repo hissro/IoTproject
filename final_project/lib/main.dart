@@ -1,7 +1,7 @@
+import 'package:final_project/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'pages/home/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,19 +20,22 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return MaterialApp(
-      title: 'Flutter IoT UI Challenge',
+      title: 'الزراعة الذكية',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          fontFamily: "Poppins",
+          fontFamily: "noura",
           sliderTheme: const SliderThemeData(
             trackShape: RectangularSliderTrackShape(),
             trackHeight: 2.5,
             thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8.0),
             overlayShape: RoundSliderOverlayShape(overlayRadius: 15.0),
           )),
-      home: const HomePage(),
+      home: const Directionality(
+          textDirection: TextDirection.rtl,
+          child: HomePage()),
     );
   }
 }

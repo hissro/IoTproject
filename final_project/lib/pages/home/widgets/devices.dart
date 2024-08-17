@@ -27,15 +27,15 @@ class Devices extends StatelessWidget {
         transitionDuration: const Duration(milliseconds: 600),
         closedElevation: 0,
         openElevation: 0,
-        openShape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.0))),
-        closedShape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.0))),
-        openBuilder: (BuildContext context, VoidCallback _) {
+        openShape: const RoundedRectangleBorder( borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        closedShape: const RoundedRectangleBorder( borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        openBuilder: (BuildContext context, VoidCallback _)
+        {
           return ControlPanelPage(tag: name);
         },
         tappable: name == "Smart AC" ? true : false,
-        closedBuilder: (BuildContext _, VoidCallback openContainer) {
+        closedBuilder: (BuildContext _, VoidCallback openContainer)
+        {
           return AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
