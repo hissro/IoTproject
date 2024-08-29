@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:final_project/model/device_model.dart';
 import 'package:final_project/pages/home/widgets/devices.dart';
-import 'package:final_project/utils/string_to_color.dart';
 import 'package:firebase_database/firebase_database.dart';
+
+import '../AboutUs/AboutUs.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -45,20 +45,28 @@ class _HomePageState extends State<HomePage>
               children:
               [
 
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children:
                   [
-                    Text(
-                      "هلا, تبيان",
+                    const Text(
+                      "مرحبا",
                       style: TextStyle(
                           fontSize: 22,
                           color: Colors.black,
                           fontWeight: FontWeight.bold ),
                     ),
 
-                    CircleAvatar( minRadius: 16, backgroundImage: AssetImage("assets/images/user.webp")),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AboutUs()),
+                        );
+                      },
+                        child: CircleAvatar( minRadius: 16, backgroundImage: AssetImage("assets/images/user.webp"))
+                    ),
                   ],
                 ),
 
@@ -107,12 +115,6 @@ class _HomePageState extends State<HomePage>
                                 ],
                               ),
 
-
-                              // Icon(
-                              //   Icons.more_horiz,
-                              //   color: Colors.grey[300],
-                              //   size: 30,
-                              // )
 
                             ],
                           ),
