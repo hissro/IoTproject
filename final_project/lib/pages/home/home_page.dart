@@ -46,8 +46,8 @@ class _HomePageState extends State<HomePage>
               [
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children:
                   [
                     const Text(
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage>
                           color: Colors.black,
                           fontWeight: FontWeight.bold ),
                     ),
-
+                    const SizedBox(width: 10,),
                     InkWell(
                       onTap: (){
                         Navigator.push(
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage>
                           //  UpdateDB
 
                           const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children:
                             [
@@ -261,10 +261,12 @@ class _HomePageState extends State<HomePage>
                                   ),
                                 );
 
-                              } else if (snapshot.hasError) {
+                              }
+                              else if (snapshot.hasError)
+                              {
                                 return const Text ("حدث خطأ ما");
                               } else {
-                                return const Text ("حدث خطأ ما"); }
+                                return const Text ("الرجاء الانتظار ،،،"); }
                             },
                           ),
 
