@@ -1,3 +1,4 @@
+import 'package:final_project/pages/Login/Login.dart';
 import 'package:final_project/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +36,9 @@ class _MyAppState extends State<MyApp> {
           )),
       home: const Directionality(
           textDirection: TextDirection.rtl,
-          child: HomePage()),
+          child: Login()
+          // child: HomePage()
+      ),
     );
   }
 }
