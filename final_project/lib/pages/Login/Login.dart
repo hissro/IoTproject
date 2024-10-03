@@ -108,7 +108,7 @@ class _LoginState extends State<Login>
                                       if (email.text.isEmpty && password.text.isEmpty )
                                         {
                                           Fluttertoast.showToast(
-                                              msg: "الرجاء تعبئة بيانات الدخول",
+                                              msg: "  Please Insert All Data   ",
                                               toastLength: Toast.LENGTH_SHORT,
                                               gravity: ToastGravity.BOTTOM,
                                               timeInSecForIosWeb: 1,

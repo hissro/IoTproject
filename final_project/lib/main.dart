@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context)
   {
     return MaterialApp(
-      title: 'الزراعة الذكية',
+      title: 'Smart Agriculture',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: "noura",
@@ -34,11 +34,21 @@ class _MyAppState extends State<MyApp> {
             thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8.0),
             overlayShape: RoundSliderOverlayShape(overlayRadius: 15.0),
           )),
-      home: const Directionality(
-          textDirection: TextDirection.rtl,
-          child: Login()
-          // child: HomePage()
-      ),
+      home: HomePage()
     );
   }
 }
+
+
+/*
+
+Manahil Mahmoud Garii Bargo 
+201700271
+
+Tebian Alargm Mohamed Ahmed Mohamed Omer
+201700406
+
+Tasabeeh Abd Alhai Mohammed sabr
+201700404
+
+*/

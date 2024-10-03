@@ -46,18 +46,12 @@ class _HomePageState extends State<HomePage>
               [
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children:
                   [
-                    const Text(
-                      "مرحبا",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold ),
-                    ),
-                    const SizedBox(width: 10,),
+                    
+                 
                     InkWell(
                       onTap: (){
                         Navigator.push(
@@ -67,6 +61,15 @@ class _HomePageState extends State<HomePage>
                       },
                         child: CircleAvatar( minRadius: 16, backgroundImage: AssetImage("assets/images/user.webp"))
                     ),
+                    const SizedBox(width: 10,),
+                    const Text(
+                      "Hello",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold ),
+                    ),
+                 
                   ],
                 ),
 
@@ -95,8 +98,8 @@ class _HomePageState extends State<HomePage>
                           //  UpdateDB
 
                           const Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start ,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children:
                             [
 
@@ -105,7 +108,7 @@ class _HomePageState extends State<HomePage>
                                 children:
                                 [
                                   Text(
-                                    "الزراعة الذكية",
+                                    "Smart Agriculture",
                                     style: TextStyle(
                                         height: 1.1,
                                         fontSize: 17,
@@ -152,7 +155,7 @@ class _HomePageState extends State<HomePage>
                                                 color: Colors.deepOrange,
                                               ),
                                               const SizedBox(width: 5,),
-                                              Text(' الحرارة: ${map["sensor"]["temperature"]} مئوية ' , style: const TextStyle( color:  Colors.deepOrange ),),
+                                              Text(' Temperature: ${map["sensor"]["temperature"]}c ' , style: const TextStyle( color:  Colors.deepOrange ),),
                                             ],
                                           ),
 
@@ -166,7 +169,7 @@ class _HomePageState extends State<HomePage>
 
                                               const SizedBox(width: 5,),
 
-                                              Text(   'الرطوبة: ${map["sensor"]["air_humdity"]}',  style: const TextStyle( color:  Colors.teal )),
+                                              Text(   'Humdity: ${map["sensor"]["air_humdity"]}',  style: const TextStyle( color:  Colors.teal )),
                                             ],
                                           ),
                                         ],
@@ -183,7 +186,7 @@ class _HomePageState extends State<HomePage>
                                             [
                                               const Icon( Icons.solar_power_outlined , color: Colors.deepPurple,),
                                               const SizedBox(width: 5,),
-                                              Text( 'رطوبة التربة: ${map["sensor"]["soail_humdity"]} ' , style: const TextStyle( color:  Colors.deepPurple )),
+                                              Text( 'Soail humdity: ${map["sensor"]["soail_humdity"]} ' , style: const TextStyle( color:  Colors.deepPurple )),
                                             ],
                                           ),
                                         ],
@@ -198,7 +201,7 @@ class _HomePageState extends State<HomePage>
                                         [
 
                                           Devices(
-                                            name: "الاضاءة ",
+                                            name: "Light Control",
                                             svg: 'assets/svg/light.svg',
                                             color:  Color( 0xFFff5f5f ),
                                             isActive: map["sensor"]["light"],
@@ -206,7 +209,7 @@ class _HomePageState extends State<HomePage>
                                             {
                                               setState(()
                                               {
-                                                print('light:  ${map["sensor"]["light"]}');
+                                                print('light Control  ${map["sensor"]["light"]}');
                                                 UpdateDB(filedname: "light", filed_value: !map["sensor"]["light"]  );
                                               });
                                             },
@@ -214,7 +217,7 @@ class _HomePageState extends State<HomePage>
 
 
                                           Devices(
-                                            name: "المروحة ",
+                                            name: "Fan Cooling",
                                             svg: 'assets/svg/ac.svg',
                                             color:  const Color( 0xFF7739ff),
                                             isActive: map["sensor"]["fan"],
@@ -234,7 +237,7 @@ class _HomePageState extends State<HomePage>
 
 
                                           Devices(
-                                            name: 'مضخة المياه',
+                                            name: 'Water Pump',
                                             svg: 'assets/svg/tv.svg',
                                             color:  const Color( 0xFF16a085 ),
                                             isActive: map["sensor"]["waterpump"],
@@ -264,9 +267,9 @@ class _HomePageState extends State<HomePage>
                               }
                               else if (snapshot.hasError)
                               {
-                                return const Text ("حدث خطأ ما");
+                                return const Text ("Sorry , Error Loading Data");
                               } else {
-                                return const Text ("الرجاء الانتظار ،،،"); }
+                                return const Text ("Please Wait   ،،،"); }
                             },
                           ),
 
