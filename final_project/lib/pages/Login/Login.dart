@@ -212,22 +212,13 @@ class _LoginState extends State<Login>
         .where('password', isEqualTo: userpass )
         .get().then( (querySnapshot)
         {
-          setState(()
-          {
-            IsLoding = false ;
-          });
-
-          if (kDebugMode)
-          {
-            print("Successfully completed");
-            print(" length  ${querySnapshot.docs.length}");
-          }
-
           if (querySnapshot.docs.isNotEmpty )
           {
-            for (var docSnapshot in querySnapshot.docs) {
+            for (var docSnapshot in querySnapshot.docs)
+            {
               print('${docSnapshot.id} => ${docSnapshot.data()}');
             }
+
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar( backgroundColor : Colors.teal , content: Text('Welcome Back,,,'), ));
             Future.delayed(const Duration(seconds: 2), () => Navigator.push( context, MaterialPageRoute(builder: (context) => const HomePage())) );
           }
@@ -235,7 +226,10 @@ class _LoginState extends State<Login>
           {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar( backgroundColor : Colors.red , content: Text('Username or password error'), ));
           }
-
+          setState(()
+          {
+            IsLoding = false ;
+          });
       },
       onError: (e)
       {
