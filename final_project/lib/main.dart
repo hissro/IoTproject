@@ -1,3 +1,4 @@
+import 'package:final_project/pages/Login/Login.dart';
 import 'package:final_project/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -5,9 +6,7 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(  options: DefaultFirebaseOptions.currentPlatform, );
   runApp(const MyApp());
 }
 
@@ -23,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context)
   {
     return MaterialApp(
-      title: 'الزراعة الذكية',
+      title: 'Smart Agriculture',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: "noura",
@@ -33,9 +32,22 @@ class _MyAppState extends State<MyApp> {
             thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8.0),
             overlayShape: RoundSliderOverlayShape(overlayRadius: 15.0),
           )),
-      home: const Directionality(
-          textDirection: TextDirection.rtl,
-          child: HomePage()),
+      // home: HomePage()
+      home: Login()
     );
   }
 }
+
+
+/*
+
+Manahil Mahmoud Garii Bargo 
+201700271
+
+Tebian Alargm Mohamed Ahmed Mohamed Omer
+201700406
+
+Tasabeeh Abd Alhai Mohammed sabr
+201700404
+
+*/
